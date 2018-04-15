@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="btnReqImg">测试请求图片流</button>
+  <button id="btnReqTxt">测试请求文本流</button>
+  <script>
+    const reqImg = document.querySelector('#btnReqImg');
+    const reqTxt = document.querySelector('#btnReqTxt');
+
+    // get请求添加查询参数
+    function urlParam(url, name, value) {
+      url += (url.indexOf('?') == -1) ? '?' : '&';
+      url += encodeURIComponent(name) + "=" + encodeURIComponent(value);
+      return url;
+    }
+
+    function ajax(url) {
+      return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.responseType = 'blob';
+        xhr.onload = () => {
+          if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+              const blob = xhr.response;
+              resolve(blob);
+            } else {
+              reject(xhr.statusText);
+            }
+          }
+        }
+        xhr.send();
+      })
+    }
+
+    reqImg.addEventListener('click', () => {
+      const url = urlParam('http://localhost:3000/img', 'imgName', 'duang.jpg');
+      ajax(url).then(response => {
+        const blob = response;
+        const img = document.createElement('img');
+        img.src = window.URL.createObjectURL(blob);
+        document.body.appendChild(img);
+      })
+    })
+
+    reqTxt.addEventListener('click', () => {
+      const url = urlParam('http://localhost:3000/text','fileName','gb2312.txt');
+      // const url = urlParam('http://localhost:3000/text', 'fileName', 'utf8.txt');
+      ajax(url).then(response => {
+        const data = response;
+        const reader = new FileReader();
+        reader.readAsText(data, 'gb2312');
+        reader.onload = function () {
+          const pre = document.createElement('pre');
+          pre.innerText = this.result;
+          document.body.appendChild(pre);
+        }
+      })
+    })
+
+  </script>
+</body>
+
+</html>
