@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <script src="https://cdn.bootcss.com/axios/0.19.0/axios.min.js"></script>
+
+  <button class="btn" onclick="postJson()">post-json</button>
+  <button class="btn" onclick="postFormdata()">post-formdata</button>
+
+  <br>
+
+  <button class="btn" onclick="getRestful()">get-restful</button>
+  <button class="btn" onclick="getQuery()">get-query</button>
+
+  <br>
+
+  <button class="btn" onclick="axiosGet()">get-axios</button>
+  <button class="btn" onclick="axiosPost()">post-axios</button>
+  <button class="btn" onclick="axiosPut()">put-axios</button>
+  <button class="btn" onclick="axiosDelete()">delete-axios</button>
+
+
+  <p>文件上传</p>
+
+  <input type="file" class="upload" style="display: none">
+  <button class="btn" onclick="upload()">点我上传</button>
+
+  <script>
+    function postJson() {
+      const xhr = new XMLHttpRequest()
+      const data = {
+        name: 'shooter'
+      }
+      xhr.open('post', 'http://localhost:3000/http/json')
+      xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
+      xhr.setRequestHeader('Accept', 'application/json, text/plain, */*')
+      xhr.send(JSON.stringify(data))
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          console.log(xhr);
+        }
+      }
+    }
+
+    function postFormdata() {
+      const xhr = new XMLHttpRequest()
+      const data = {
+        name: 'shooter'
+      }
+      xhr.open('post', 'http://localhost:3000/http/formdata')
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xhr.send('name=shooter')
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          console.log(xhr);
+        }
+      }
+    }
+
+    function axiosPost() {
+      const data = {
+        name: 'shooter'
+      }
+      // json
+      axios.post('http://localhost:3000/http/json', data).then(res => {
+        console.log(res);
+      })
+
+      // 表单
+      axios.post('http://localhost:3000/http/formdata', 'name=shooter&age=24').then(res => {
+        console.log(res);
+      })
+    }
+
+    function getRestful() {
+      const xhr = new XMLHttpRequest()
+      const data = {
+        name: 'shooter'
+      }
+      xhr.open('get', 'http://localhost:3000/http/getRestful/123456')
+      xhr.send()
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          console.log(xhr);
+        }
+      }
+    }
+
+    function getQuery() {
+      const xhr = new XMLHttpRequest()
+      xhr.open('get', 'http://localhost:3000/http/getQuery?id=123456')
+      xhr.send()
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          console.log(xhr);
+        }
+      }
+    }
+
+    function axiosGet() {
+      axios.get('http://localhost:3000/http/getRestful/123456', {
+        headers: {
+          // 'token': ''
+        }
+      }).then(res => {
+        console.log(res);
+        const headers = res.request.getAllResponseHeaders()
+        console.log(headers)
+        // console.log(res.request.getAllResponseHeaders)
+      })
+
+      axios.get('http://localhost:3000/http/getQuery', {
+        params: {
+          id: 123456
+        }
+      }).then(res => {
+        console.log(res)
+      })
+
+    }
+
+    function axiosPut() {
+      axios.put('http://localhost:3000/http/put', {
+        name: 'abc'
+      }).then(res => {
+        console.log(res)
+      })
+    }
+
+    function axiosDelete() {
+      // delete 第二个参数是 config
+      axios.delete('http://localhost:3000/http/delete', {
+        data: {
+          name: 'abc'
+        },
+        headers: {
+          "Content-Type": "application/json;charset=UTF-8"
+        }
+      }).then(res => {
+        console.log(res)
+      })
+    }
+
+
+    // 文件上传
+    const fileInput = document.querySelector('.upload')
+    fileInput.addEventListener('change', fileChange, false)
+    function upload() {
+      fileInput.click()
+    }
+
+    function fileChange(e) {
+      console.log(e.target.files[0])
+      const file = e.target.files[0]
+      const formData = new FormData()
+      formData.append('catalogcode', '123')
+      formData.append('img', file)
+
+      axios({
+        method: 'post',
+        url: 'http://localhost:3000/http/upload',
+        data: formData
+      }).then((res) => {
+        console.log(res)
+        res.data.forEach((uri) => {
+          const img = document.createElement('img');
+          img.src = uri;
+          img.width = 600;
+          img.height = 300;
+          document.body.appendChild(img);
+        })
+      })
+
+      // const xhr = new XMLHttpRequest()
+      // xhr.open('post', 'http://localhost:3000/http/upload')
+      // xhr.send(formData)
+
+      // xhr.onreadystatechange = function () {
+      //   if (xhr.readyState === 4 && xhr.status === 200) {
+      //     console.log(xhr);
+      //   }
+      // }
+
+    }
+
+
+  </script>
+</body>
+
+</html>
