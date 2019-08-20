@@ -35,6 +35,10 @@
   <input type="file" class="upload" style="display: none">
   <button class="btn" onclick="upload()">点我上传</button>
 
+  <p>文件下载</p>
+
+  <button onclick="download()">点我下载</button>
+
   <script>
     function postJson() {
       const xhr = new XMLHttpRequest()
@@ -194,6 +198,41 @@
       //     console.log(xhr);
       //   }
       // }
+
+    }
+
+
+    // 文件下载
+    function download() {
+      // axios.get('http://localhost:3000/http/download')
+      // window.open('http://localhost:3000/http/download')
+      // a 标签下载
+      // const link = document.createElement('a')
+      // link.target = '_blank'
+      // link.href = 'http://localhost:3000/http/download'
+      // document.body.appendChild(link); // Required for Firefox
+      // link.click()
+      // link.remove()
+
+      // post 表单下载
+      const downloadFile = () => {
+        const form = document.createElement('form')
+        form.setAttribute('action', 'http://localhost:3000/http/download')
+        form.setAttribute('method', 'post')
+
+        // for (const key in params) {
+        //   const input = document.createElement('input')
+        //   input.setAttribute('type', 'hidden')
+        //   input.setAttribute('name', key)
+        //   input.setAttribute('value', params[key])
+        //   form.appendChild(input)
+        // }
+
+        document.body.append(form)
+        form.submit()
+        form.remove()
+      }
+      downloadFile()
 
     }
 

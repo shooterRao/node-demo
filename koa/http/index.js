@@ -45,6 +45,7 @@ router.get('/http/getQuery', async (ctx, next) => {
   await next();
 });
 
+// 文件上传
 router.post('/http/upload', async (ctx, next) => {
   const params = ctx.request.body;
   console.log(params);
@@ -76,6 +77,28 @@ router.post('/http/upload', async (ctx, next) => {
 
   await next();
 });
+
+// 文件下载
+router.get('/http/download', async (ctx, next) => {
+  const filePath = path.join(process.cwd(), 'public', 'img', '江南烧酒.jpg')
+  const filename = 'img'
+  const reader = fs.createReadStream(filePath)
+  ctx.body = reader
+  ctx.set('Content-disposition', 'attachment; filename=' + `${filename}.jpg`)
+  ctx.set('Content-type', 'image/jpeg')
+  await next();
+})
+
+router.post('/http/download', async (ctx, next) => {
+  const filePath = path.join(process.cwd(), 'public', 'img', '江南烧酒.jpg')
+  const filename = 'img'
+  const reader = fs.createReadStream(filePath)
+  ctx.body = reader
+  ctx.set('Content-disposition', 'attachment; filename=' + `${filename}.jpg`)
+  ctx.set('Content-type', 'application/octet-stream')
+  await next();
+})
+
 
 router.post('/http/formdata', async (ctx, next) => {
   console.log(ctx.request.body);
