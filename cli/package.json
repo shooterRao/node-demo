@@ -1,0 +1,24 @@
+{
+  "name": "mycli",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "bin": {
+    "mycli": "./bin/index.js"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "cli-cursor": "^2.1.0",
+    "commander": "^2.19.0",
+    "download-git-repo": "^1.1.0",
+    "execa": "^1.0.0",
+    "inquirer": "^6.2.1",
+    "log-update": "^2.3.0",
+    "ora": "^3.0.0",
+    "progress-estimator": "^0.2.2",
+    "shelljs": "^0.8.3"
+  },
+  "devDependencies": {
+    "prettier": "^1.16.4"
+  }
+}

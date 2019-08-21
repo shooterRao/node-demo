@@ -1,0 +1,21 @@
+{
+  "VERSION": "3.2.18 (2019-07-04 17:10)",
+  "development": {
+    "API": "http://52.83.137.211:8085",
+    "API_FILE_DIR": "/dgp-server-web-nr/",
+    "TLH_API": "http://52.83.137.211:8085/dgp-server-web-nr/",
+    "DATAEYE": "http://52.82.69.176:28888/dataeye/#/",
+    "ONEMAP": "http://52.83.142.190:8085/zjbyzt/index.html?component=no",
+    "_ONEMAP": "http://10.80.2.203:8000/portal#/gtb",
+    "INDEXSYSTEM": "http://52.83.137.211:8085/NrIndexSystem/#/",
+    "TZONEMAP": "http://52.83.142.190:8088/CityOneMap/",
+    "ARCGISURL": "http://52.83.137.211:8085/dgp_js_api49",
+    "SPATIAL_API": "http://52.82.98.186:8888/api/",
+    "SPATIAL_WEBSOCKET": "ws://52.82.98.186:4650/Notice"
+  },
+  "production": {
+    "API": "http://52.83.137.211:8085",
+    "API_FILE_DIR": "/dgp-server-web-nr/",
+    "TLH_API": "http://52.83.137.211:8085/dgp-server-web-nr/"
+  }
+}

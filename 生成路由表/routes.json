@@ -1,0 +1,201 @@
+[
+  {
+    "path": "/FZBZ",
+    "name": "FZBZ",
+    "meta": {
+      "navTitle": "辅助编制",
+      "icon": "icon-fuzhubianzhi",
+      "weight": 1,
+      "access": []
+    },
+    "redirect": "/FZBZ/BaseDateHandle",
+    "children": [
+      {
+        "path": "BaseDateHandle",
+        "name": "BaseDateHandle",
+        "meta": {
+          "navTitle": "基期数据处理",
+          "icon": "icon-shujuchanpinliulan",
+          "showDropdown": true
+        },
+        "redirect": {
+          "name": "DataViews"
+        },
+        "children": [
+          {
+            "path": "DataViews",
+            "name": "DataViews",
+            "meta": {
+              "navTitle": "数据浏览"
+            }
+          },
+          {
+            "path": "ToolMap",
+            "name": "ToolMap",
+            "meta": {
+              "navTitle": "工具集"
+            }
+          }
+        ]
+      },
+      {
+        "path": "NatureAnalysisEvaluationV2",
+        "name": "NatureAnalysisEvaluationV2",
+        "meta": {
+          "navTitle": "自然分析评价",
+          "icon": "icon-ziranziyuanfenxipingjia"
+        },
+        "redirect": {
+          "name": "EvaluationHome"
+        },
+        "children": [
+          {
+            "path": "EvaluationHome",
+            "name": "EvaluationHome"
+          }
+        ]
+      },
+      {
+        "path": "NatureAnalysisEvaluation",
+        "name": "NatureAnalysisEvaluation",
+        "meta": {
+          "navTitle": "自然资源分析评价",
+          "icon": "icon-ziranziyuanfenxipingjia"
+        },
+        "redirect": {
+          "name": "EvaluationBrower"
+        },
+        "children": [
+          {
+            "path": "EvaluationBrower",
+            "name": "EvaluationBrower",
+            "children": [
+              {
+                "path": "RightAllView",
+                "name": "RightAllView"
+              },
+              {
+                "path": "LargeClassDes",
+                "name": "LargeClassDes"
+              },
+              {
+                "path": "SubClassDes",
+                "name": "SubClassDes"
+              },
+              {
+                "path": "IndustryLayout",
+                "name": "IndustryLayout"
+              }
+            ]
+          },
+          {
+            "path": "EvaluationPager",
+            "name": "EvaluationPager"
+          }
+        ]
+      },
+      {
+        "path": "DoubleEvaluation",
+        "name": "DoubleEvaluation",
+        "meta": {
+          "navTitle": "双评价",
+          "icon": "icon-fuzhufenxigongju-"
+        }
+      }
+    ]
+  },
+  {
+    "path": "/FZSC",
+    "name": "FZSC",
+    "meta": {
+      "navTitle": "辅助审查",
+      "icon": "icon-fuzhushencha",
+      "weight": 1,
+      "disabled": true
+    },
+    "redirect": {
+      "name": "DataPrepareContainer"
+    },
+    "children": [
+      {
+        "path": "DataPrepareContainer",
+        "name": "DataPrepareContainer",
+        "meta": {
+          "navTitle": "数据准备",
+          "icon": "icon-shujuchanpinliulan"
+        },
+        "redirect": {
+          "name": "FZSCHome"
+        },
+        "children": [
+          {
+            "path": "FZSCHome",
+            "name": "FZSCHome"
+          },
+          {
+            "path": "DataPreparationCreate",
+            "name": "DataPreparationCreate"
+          },
+          {
+            "path": "ReportBasicInformation",
+            "name": "ReportBasicInformation"
+          }
+        ]
+      },
+      {
+        "path": "ResultsReviewContainer",
+        "name": "ResultsReviewContainer",
+        "meta": {
+          "navTitle": "成果审查",
+          "icon": "icon-ziranziyuanfenxipingjia"
+        },
+        "redirect": {
+          "name": "ResultsReview"
+        },
+        "children": [
+          {
+            "path": "ResultsReview",
+            "name": "ResultsReview"
+          },
+          {
+            "path": "ResultsPlanningImport",
+            "name": "ResultsPlanningImport"
+          },
+          {
+            "path": "ResultsReviewCreate",
+            "name": "ResultsReviewCreate"
+          },
+          {
+            "path": "ResultsReviewInformation",
+            "name": "ResultsReviewInformation"
+          },
+          {
+            "path": "ResultsSuccess",
+            "name": "ResultsSuccess"
+          },
+          {
+            "path": "ResultsUpload",
+            "name": "ResultsUpload"
+          }
+        ]
+      },
+      {
+        "path": "ResultsManageContainer",
+        "name": "ResultsManageContainer",
+        "meta": {
+          "navTitle": "成果管理",
+          "icon": "icon-fuzhufenxigongju-"
+        },
+        "redirect": {
+          "name": "ResultsManagement"
+        },
+        "children": [
+          {
+            "path": "ResultsManagement",
+            "name": "ResultsManagement"
+          }
+        ]
+      }
+    ]
+  }
+]
