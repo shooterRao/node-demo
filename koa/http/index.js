@@ -10,7 +10,9 @@ const router = new Router();
 
 app.use(static('./public'));
 
-app.use(cors());
+app.use(cors({
+  credentials: true, // Access-Control-Allow-Credentials
+}));
 
 router.get('/', async (ctx, next) => {
   // ctx.router available
@@ -140,6 +142,22 @@ router.del('/http/delete', async (ctx, next) => {
 //   // 其他一些设置...
 //   await next();
 // });
+
+  router.get('/http/setCookie', async (ctx, next) => {
+    // ctx.vary('Origin');
+    // console.log(ctx.get('Origin'));
+    const domain = ctx.get('Origin');
+    console.log(domain);
+    ctx.body = {
+      status: '200'
+    };
+    ctx.cookies.set('cid', 'hello world', {
+      domain: "localhost",
+      maxAge: 100 * 1000,
+      httpOnly: true
+    })
+    await next();
+  })
 
 app.use(
   koaBody({

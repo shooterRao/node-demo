@@ -100,6 +100,20 @@ program
     }
   });
 
+program
+  .command('chrome')
+  .alias('ch')
+  .description('chrome 9222')
+  .action(async () => {
+    try {
+      await shell(`/Applications/Google\\ Chrome\\ Canary.app/Contents/MacOS/Google\\ Chrome\\ Canary --remote-debugging-port=9222`, {
+        // cwd: '/Users/raojw/Applications/Google'
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  });
+
 program.version('0.0.1', '-v, --version');
 
 program.parse(process.argv);

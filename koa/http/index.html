@@ -29,6 +29,12 @@
   <button class="btn" onclick="axiosPut()">put-axios</button>
   <button class="btn" onclick="axiosDelete()">delete-axios</button>
 
+  <br>
+
+  <button class="btn" onclick="getCookie()">cookie</button>
+  <button class="btn" onclick="setCookie()">setCookie</button>
+  <button class="btn" onclick="options()">options</button>
+
 
   <p>文件上传</p>
 
@@ -234,6 +240,52 @@
       }
       downloadFile()
 
+    }
+
+    function getCookie() {
+      const xhr = new XMLHttpRequest()
+      const data = {
+        name: 'shooter'
+      }
+      xhr.open('get', 'http://localhost:3000/http/getRestful/123456')
+      // xhr.open('get', 'http://192.168.1.164:8089/dgp-server-web/rest/orgs/v1')
+      xhr.withCredentials = true;
+      xhr.send()
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          console.log(xhr);
+        }
+      }
+    }
+
+    function setCookie() {
+      const xhr = new XMLHttpRequest()
+      xhr.open('get', 'http://localhost:3000/http/setCookie')
+      xhr.withCredentials = true;
+      xhr.send()
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          console.log(xhr);
+        }
+      }
+    }
+
+    function options() {
+      const xhr = new XMLHttpRequest()
+      const data = {
+        name: 'shooter'
+      }
+      xhr.open('get', 'http://localhost:3000/http/getRestful/123456')
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.send()
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          console.log(xhr);
+        }
+      }
     }
 
 

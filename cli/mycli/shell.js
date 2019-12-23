@@ -5,6 +5,6 @@ const options = {
   stdio: "inherit",
   cwd
 };
-const shell = mes => execa.shell(mes, options);
+const shell = (mes, opts) => execa.shell(mes, {...options, ...opts});
 
 module.exports = shell;
