@@ -16,7 +16,7 @@
     "log-update": "^2.3.0",
     "ora": "^3.0.0",
     "progress-estimator": "^0.2.2",
-    "shelljs": "^0.8.3"
+    "shelljs": "^0.8.5"
   },
   "devDependencies": {
     "prettier": "^1.16.4"
